@@ -1,0 +1,66 @@
+{
+	"name": "gctrm-editor",
+	"displayName": "GCT RealMate Code Editor [ALPHA]",
+	"description": "an extension to assist in the development of gekko codes for PM, P+, and other Brawl mods",
+	"version": "0.0.1",
+	"publisher": "fudgepops",
+	"engines": {
+		"vscode": "^1.46.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onLanguage:gctrm",
+		"onCommand:gct-editor.helloWorld"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"languages": [
+			{
+				"id": "gctrm",
+				"aliases": [
+					"gct realmate"
+				],
+				"extensions": [
+					".asm"
+				],
+				"configuration": "./syntaxes/main/gctrm-configuration.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "gctrm",
+				"scopeName": "source.gctrm",
+				"path": "./syntaxes/main/GCTRM.json"
+			}
+		],
+		"commands": [
+			{
+				"command": "gct-editor.helloWorld",
+				"title": "Hello World"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"lint": "eslint src --ext ts",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.46.0",
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^7.0.2",
+		"@types/node": "^13.11.0",
+		"eslint": "^6.8.0",
+		"@typescript-eslint/parser": "^2.30.0",
+		"@typescript-eslint/eslint-plugin": "^2.30.0",
+		"glob": "^7.1.6",
+		"mocha": "^7.1.2",
+		"typescript": "^3.8.3",
+		"vscode-test": "^1.3.0"
+	}
+}

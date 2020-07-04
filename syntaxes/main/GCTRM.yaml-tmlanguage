@@ -1,0 +1,81 @@
+name: gctrm
+scopeName: source.gctrm
+fileTypes:
+  - ts
+patterns:
+  - include: '#keywords'
+  - include: '#mnemonics'
+  - include: '#numbers'
+  - include: '#registers'
+  - include: '#separators'
+  - include: '#locations'
+  - include: '#comments'
+repository:
+  mnemonics:
+    patterns:
+      - match: '(\b(?:addc|adde|addi|addic|addic\.|addis|addme|add|addze|andc|andi\.|andis\.|and|cmp|cmpi|cmpl|cmpli|cntlzw|crand|crandc|creqv|crnand|crnor|cror|crorc|crxor|dcbf|dcbi|dcbst|dcbt|dcbtst|dcbz_l|dcbz|divwu|divw|eciwx|ecowx|eieio|eqv|extsb|extsh|fabs|fadds|fadd|fcmpo|fcmpu|fctiw|fctiwz|fdivs|fdiv|fmadds|fmadd|fmr|fmsubs|fmsub|fmuls|fmul|fnabs|fneg|fnmadds|fnmadd|fnmsubs|fnmsub|fres|frsp|frsqrte|fsel|fsubs|fsub|icbi|isync|lbz|lbzu|lbzux|lbzx|lfd|lfdu|lfdux|lfdx|lfs|lfsu|lfsux|lfsx|lha|lhau|lhaux|lhax|lhbrx|lhz|lhzu|lhzux|lhzx|lmw|lswi|lswx|lwarx|lwbrx|lwz|lwzu|lwzux|lwzx|mcrf|mcrfs|mcrxr|mfcr|mffs|mfmsr|mfsr|mfsrin|mtcrf|mtfsb0|mtfsb1|mtfsf|mtfsfi|mtmsr|mtsr|mtsrin|mulhw|mulhwu|mulli|mullw|nand|neg|nor|or|orc|ori|oris|psq_l|psq_lu|psq_lux|psq_lx|psq_st|psq_stu|psq_stux|psq_stx|ps_abs|ps_add|ps_cmpo0|ps_cmpo1|ps_cmpu0|ps_cmpu1|ps_div|ps_madd|ps_madds0|ps_madds1|ps_merge00|ps_merge01|ps_merge10|ps_merge11|ps_mr|ps_msub|ps_mul|ps_muls0|ps_muls1|ps_nabs|ps_neg|ps_nmadd|ps_nmsub|ps_res|ps_rsqrte|ps_sel|ps_sub|ps_sum0|ps_sum1|rfi|rlwimi|rlwinm|rlwnm|sc|slw|sraw|srawi|srw|stb|stbu|stbux|stbx|stfd|stfdu|stfdux|stfdx|stfiwx|stfs|stfsu|stfsux|stfsx|sth|sthbrx|sthu|sthux|sthx|stmw|stswi|stswx|stw|stwbrx|stwcx\.|stwu|stwux|stwx|subf|subfc|subfe|subfic|subfme|subfze|sync|tlbie|tlbsync|tw|twi|xor|xori|xoris|mfspr|mftb|mtspr|fctiwz|fctiwz\.) )'
+        name: support.function
+      - match: '(\b(?:subic|subic\.|lis|subis|cmpd|cmpw|cmpdi|cmpwi|cmpld|cmplw_cr3|cmpldi|cmplwi|crse|crnot|crmove|crclr|mtcr|not|mr|nop|rotlw|sub|subc|tweq|rwlge|trap|twgtir|twlleir|mfxer|mflr|mfctr|mftb|mftbur|mtxer|mtlr|mtctr|li|la|subi|mtxer|mtlr) )'
+        name: support.function
+      - match: '(\b(?:bt|bf|bdnz|bdnzt|bdnzf|bdz|bdzt|bdzf|bta|bfa|bdnza|bdnzta|bdnzfa|bdza|bdzta|bdzfa|blr|btlr|bflr|bdnzlr|bdnztlr|bdnzflr|bdzlr|bdztlr|bdzflr|bctr|btctr|bfctr|btl|bfl|bdnzl|bdnztl|bdnzfl|bdzl|bdztl|bdzfl|btla|bfla|bdnzla|bdnztla|bdnzfla|bdzla|bdztla|bdzfla|blrl|btlrl|bflrl|bdnzlrl|bdnztlrl|bdnzflrl|bdzlrl|bdztlrl|bdzflrl|bctrl|btctrl|bcctr|bne|bnelr|bclr|bc|b|bltctr|bnectrcr2|bltlr|bnelrcr2|bdnzlr|blt|bne|bdnz|beq|bge|bgt|blt|blta|bltlr|bltctr|bltl|bltla|bltlrl|bltctrl|ble|blea|blelr|blectr|blel|blela|blelrl|blectrl|beq|beqa|beqlr|beqctr|beql|beqla|beqlrl|beqctrl|bge|bgea|bgelr|bgectr|bgel|bgela|bgelrl|bgectrl|bgt|bgta|bgtlr|bgtctr|bgtl|bgtla|bgtlrl|bgtctrl|bnl|bnla|bnllr|bnlctr|bnll|bnlla|bnllrl|bnlctrl|bne|bnea|bnelr|bnectr|bnel|bnela|bnelrl|bnectrl|bng|bnga|bnglr|bngctr|bngl|bngla|bnglrl|bngctrl|bso|bsoa|bsolr|bsoctr|bsol|bsola|bsolrl|bsoctrl|bns|bnsa|bnslr|bnsctr|bnsl|bnsla|bnslrl|bnsctrl|bun|buna|bunlr|bunctr|bunl|bunla|bunlrl|bunctrl|bnu|bnua|bnulr|bnuctr|bnul|bnula|bnulrl|bnuctrl))(\+|\-)?\s'
+        captures:
+          '1': { name: constant.language }
+          '2': { name: variable.parameter }
+  numbers:
+    patterns:
+      - match: '(\$[0-9a-fA-F]{8})'
+        captures:
+          '1': { name: constant.numeric }
+      - match: '(\b0x[0-9a-fA-F]+|\b\d+)'
+        name: constant.numeric
+  separators:
+    patterns:
+      - match: ',|;'
+        name: meta.separator
+  registers:
+    patterns:
+      - match: '\b(r|f)(31|30|[0-2]?[0-9]{1})'
+        captures:
+          '1': { name: support.type }
+          '2': { name: variable.language }
+  locations:
+    patterns:
+      - match: '^(\w+):'
+        captures:
+          '1': { name: string.unquoted }
+  keywords:
+    patterns:
+      - match: '(\.alias) (\w+)'
+        captures:
+          '1': { name: keyword.other }
+          '2': { name: variable }
+      - match: '\b(op)'
+        name: keyword.other
+      - match: '\b(HOOK|CODE) @ (\$[0-9a-fA-F]{8})'
+        captures:
+          '1': { name: keyword.other }
+          '2': { name: constant.numeric }
+      - match: '%(?:end|END)%'
+        name: keyword.other
+      - match: '(\.macro) (\w+)\((.+?)\)'
+        captures:
+          '1': { name: keyword.other }
+          '2': { name: entity.name.function }
+          '3': { name: variable.parameter }
+      - match: '<.+?>'
+        name: variable.parameter
+      - match: '(%[\w_]+?)\('
+        captures:
+          '1': { name: meta.preprocessor }
+      - match: '\b(byte|word|float|half|scalar|LA_Basic|LA_Float|LA_Bit|IC_Basic)'
+        captures:
+          '1': { name: support.type }
+      - match: '\.(?:BA|GOTO|PO|RESET)'
+        name: meta.preprocessor
+  comments:
+    patterns:
+      - match: '((?:#|//).*$)'
+        name: comment
+      - match: '(^[^#]+?]$)'
+        name: comment
+
