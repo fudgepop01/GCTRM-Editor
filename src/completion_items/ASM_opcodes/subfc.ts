@@ -31,7 +31,8 @@ export default {
   "description": "The sum ¬ (rA) + (rB) + 1 is placed into rD. (equivlent to (rB)--(rA))",
   "simple": [{
     name: "subc",
-    isSimple: true,
+    isSimple(value: number[]) { return true },
+    "equivalent": "subfc rD, rB, rA",
     parameters: [ rD, rA, rB ]
   }]
 }

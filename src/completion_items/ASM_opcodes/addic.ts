@@ -21,6 +21,7 @@ export default {
       if (values[2] && values[2] < 0) return true;
       else return false;
     },
+    "equivalent": "addic rD, rA, -SIMM",
     "parameters": [ rD, rA, SIMM ]
   }]
 }

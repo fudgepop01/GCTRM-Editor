@@ -37,14 +37,17 @@ export default {
   "simple": [{
     name: "mfxer",
     isSimple(values: number[]) { return values[1] === 1},
+    "equivalent": "mfspr rD, 1",
     parameters: [rD]
   }, {
     name: "mflr",
     isSimple(values: number[]) { return values[1] === 8},
+    "equivalent": "mfspr rD, 8",
     parameters: [rD]
   }, {
     name: "mfctr",
     isSimple(values: number[]) { return values[1] === 9},
+    "equivalent": "mfspr rD, 9",
     parameters: [rD]
   }]
 }

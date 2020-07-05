@@ -31,6 +31,7 @@ export default {
   "simple": [{
     name: "not",
     isSimple(values: number[]) { return values[1] === values[2] },
+    "equivalent": "nor rA, rS, rS",
     parameters: [ rA, rS ]
   }]
 }

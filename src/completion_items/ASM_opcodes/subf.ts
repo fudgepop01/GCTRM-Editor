@@ -31,7 +31,8 @@ export default {
   "description": "The sum ¬ (rA) + (rB) + 1 is placed into rD. (equivlent to (rB)--(rA))\nThe subf instruction is preferred for subtraction because it sets few status bits.",
   "simple": [{
     name: "sub",
-    isSimple: true,
+    isSimple(value: number[]) {return true },
+    "equivalent": "subf rD, rB, rA",
     parameters: [ rD, rA, rB ]
   }]
 }

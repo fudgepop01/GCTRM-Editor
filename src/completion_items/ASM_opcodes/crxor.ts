@@ -30,6 +30,7 @@ export default {
   "simple": [{
     name: "crclr",
     isSimple(values: number[]) { return values[0] === values[1] && values[1] === values[3] },
+    "equivalent": "crxor crbD, crbD, crbD",
     parameters: [ crbD ]
   }]
 }

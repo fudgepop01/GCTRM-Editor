@@ -40,11 +40,13 @@ export default {
   "simple": [{
     "name": "cmpldi",
     isSimple(values: number[]) { return values[0] == 0 && values[1] === 1 },
+    "equivalent": "cmpli 0, 1, rA, UIMM",
     "parameters": [ rA, UIMM ]
   },
   {
     "name": "cmplwi_cr3",
     isSimple(values: number[]) { return values[0] == 3 && values[1] === 0 },
+    "equivalent": "cmpli 3, 0, rA, UIMM",
     "parameters": [ rA, UIMM ]
   }]
 }

@@ -33,14 +33,17 @@ export default {
   "simple": [{
     name: "tweq",
     isSimple(values: number[]) { return values[0] === 4 },
+    "equivalent": "tw 4, rA, rB",
     parameters: [ rA, rB ]
   }, {
     name: "rwlge",
     isSimple(values: number[]) { return values[0] === 5 },
+    "equivalent": "tw 5, rA, rB",
     parameters: [ rA, rB ]
   }, {
     name: "trap",
     isSimple(values: number[]) { return values[0] === 31 && values[1] === 0 && values[2] === 0 },
+    "equivalent": "tw 31, 0, 0",
     parameters: []
   }]
 }

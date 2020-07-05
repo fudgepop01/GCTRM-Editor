@@ -29,6 +29,7 @@ export default {
   "simple": [{
     name: "crnot",
     isSimple(values: number[]) { return values[1] === values[2] },
+    "equivalent": "crnor crbD, crbA, crbA",
     parameters: [ crbD, crbA ]
   }]
 }

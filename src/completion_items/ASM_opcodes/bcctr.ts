@@ -39,11 +39,13 @@ export default {
   "simple": [{
     "name": "bltctr",
     isSimple(values: any) { return values[0] == 12 && values[1] === 0 },
+    "equivalent": "bcctr 12, 0",
     "parameters": []
   },
   {
     "name": "bnectrcr2",
     isSimple(values: any) { return values[0] == 4 && values[1] === 10 },
+    "equivalent": "bcctr 4, 10",
     "parameters": []
   }]
 }

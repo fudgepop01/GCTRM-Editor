@@ -43,16 +43,19 @@ export default {
   "simple": [{
     "name": "bltlr",
     isSimple(values: number[]) { return values[0] == 12 && values[1] === 0 },
+    "equivalent": "bclr 12, 0",
     "parameters": []
   },
   {
     "name": "bnelrcr2",
     isSimple(values: number[]) { return values[0] == 4 && values[1] === 10 },
+    "equivalent": "bclr 4, 10",
     "parameters": []
   },
   {
     "name": "bdnzlr",
     isSimple(values: number[]) { return values[0] == 16 && values[1] === 0 },
+    "equivalent": "bclr 16, 0",
     "parameters": []
   }]
 }

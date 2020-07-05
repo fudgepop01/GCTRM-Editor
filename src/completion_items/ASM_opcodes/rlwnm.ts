@@ -27,6 +27,7 @@ export default {
   "simple": [{
     name: "rotlw",
     isSimple(values: number[]) { return values[3] === 0 && values[4] === 31 },
+    "equivalent": "rlwnm rA, rS, rB, 0, 31",
     parameters: [ rA, rS, rB ]
   }]
 }

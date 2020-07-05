@@ -29,6 +29,7 @@ export default {
   "simple": [{
     name: "crmove",
     isSimple(values: number[]) { return values[1] === values[2] },
+    "equivalent": "cror crbD, crbA, crbA",
     parameters: [ crbD, crbA ]
   }]
 

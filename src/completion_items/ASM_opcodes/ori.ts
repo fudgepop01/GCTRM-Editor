@@ -23,6 +23,7 @@ export default {
   "simple": [{
     name: "nop",
     isSimple(values: number[]) { return values.every(val => val === 0) },
+    "equivalent": "ori 0, 0, 0",
     parameters: []
   }]
 }

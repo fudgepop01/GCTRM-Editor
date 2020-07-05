@@ -42,16 +42,19 @@ export default {
   "simple": [{
     "name": "blt",
     isSimple(values: number[]) {return values[0] == 12 && values[1] == 0},
+    "equivalent": "bc 12, 0, target_addr",
     "parameters": [target_addr]
   },
   {
     "name": "bne",
     isSimple(values: number[]) {return values[0] == 4 && values[1] === 10},
+    "equivalent": "bc 4, 10, target_addr",
     "parameters": [target_addr]
   },
   {
     "name": "bdnz",
     isSimple(values: number[]) {return values[0] == 16 && values[1] === 0},
+    "equivalent": "bc 16, 0, target_addr",
     "parameters": [target_addr]
   }]
 }

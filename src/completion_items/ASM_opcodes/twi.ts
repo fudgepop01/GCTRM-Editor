@@ -23,10 +23,12 @@ export default {
   "simple": [{
     name: "twgtir",
     isSimple(values: number[]) { return values[0] === 8 },
+    "equivalent": "twi 8, rA, SIMM",
     parameters: [ rA, SIMM ]
   }, {
     name: "twlleir",
     isSimple(values: number[]) { return values[0] === 6 },
+    "equivalent": "twi 6, rA, SIMM",
     parameters: [ rA, SIMM ]
   }]
 }

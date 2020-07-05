@@ -37,10 +37,12 @@ export default {
   "simple": [{
     name: "mftb",
     isSimple(values: number[]) { return values[1] === 268},
+    "equivalent": "mftb rD, 268",
     parameters: [rD]
   }, {
     name: "mftbur",
     isSimple(values: number[]) { return values[1] ===  269},
+    "equivalent": "mftb rD, 269",
     parameters: [rD]
   }]
 }

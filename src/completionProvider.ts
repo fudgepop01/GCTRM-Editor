@@ -45,7 +45,9 @@ export const GCTRealMateProvider: vscode.CompletionItemProvider = {
     }
 
     // scan through document and get all aliases, macros, and current argument names
+    layer = 0;
     const additions: { [key: string]: string[] } = {
+      labels: [], // TODO
       aliases: [],
       macros: [],
       arguments: []
@@ -55,7 +57,7 @@ export const GCTRealMateProvider: vscode.CompletionItemProvider = {
       if (lineText.startsWith('{')) layer ++;
       else if (lineText.startsWith('}')) layer --;
 
-      if (layer === 0 || (startLine <= line && line < endLine)) {
+      if (layer === 0 || (startLine !== 0 && startLine <= line && line < endLine)) {
         const aliasMatch = lineText.match(/\.alias ([\w_]+)/);
         if (aliasMatch) {
           additions.aliases.push(aliasMatch[1])
@@ -84,7 +86,7 @@ export const GCTRealMateProvider: vscode.CompletionItemProvider = {
         return {
           label: '%' + s,
           kind: vscode.CompletionItemKind.Method,
-          insertText: new vscode.SnippetString('%' + s + '(${1:params...})'),
+          insertText: new vscode.SnippetString(((context.triggerCharacter === '%') ? '' : '%') + s + '(${1:params...})'),
           filterText: s
         }
       }),
@@ -92,7 +94,7 @@ export const GCTRealMateProvider: vscode.CompletionItemProvider = {
         return {
           label: s,
           kind: vscode.CompletionItemKind.Constant,
-          insertText: s,
+          insertText: s.substring((context.triggerCharacter === '<') ? 1 : 0),
           filterText: s.substring(1)
         }
       }),

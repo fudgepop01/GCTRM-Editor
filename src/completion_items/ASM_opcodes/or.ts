@@ -31,6 +31,7 @@ export default {
   "simple": [{
     name: "mr",
     isSimple(values: number[]) { return values[1] === values[2] },
+    "equivalent": "or rA, rS, rS",
     parameters: [rA, rS]
   }]
 }

@@ -39,6 +39,7 @@ export default {
   "simple": [{
     name: "mtcr",
     isSimple(values: number[]) { values[0] == 0xFF },
+    "equivalent": "mtcrf 0xFF, rS",
     parameters: [ rS ]
   }]
 }

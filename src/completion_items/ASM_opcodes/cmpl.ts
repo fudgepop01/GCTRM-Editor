@@ -52,11 +52,13 @@ export default {
   "simple": [{
     "name": "cmpld",
     isSimple(values: number[]) { return values[0] == 0 && values[1] === 1 },
+    "equivalent": "cmpl 0, 1, rA, rB",
     "parameters": [rA, rB]
   },
   {
     "name": "cmplw_cr3",
     isSimple(values: number[]) { return values[0] == 3 && values[1] === 0 },
+    "equivalent": "cmpl 3, 0, rA, rB",
     "parameters": [rA, rB]
   }]
 }

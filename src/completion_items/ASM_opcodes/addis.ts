@@ -23,11 +23,13 @@ export default {
   "simple": [{
     "name": "lis",
     isSimple(values: number[]) { return values[1] && values[1] == 0 },
+    "equivalent": "addis rD, 0, SIMM",
     "parameters": [rD, SIMM]
   },
   {
     "name": "subis",
     isSimple(values: number[]) { return values[2] && values[2] < 0 },
+    "equivalent": "addis rD, rA, -SIMM",
     "parameters": [rD, rA, SIMM]
   }]
 }
