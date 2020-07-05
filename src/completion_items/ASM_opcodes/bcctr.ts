@@ -38,12 +38,12 @@ export default {
   "description": "The BI field specifies the bit in the condition register to be used as the condition of the branch. The\nBO field is encoded as described in Table 12-7. Additional information about BO field encoding is\nprovided in Section 4.2.4.2, “Conditional Branch Control,” in the PowerPC Microprocessor\nFamily: The Programming Environments manual.",
   "simple": [{
     "name": "bltctr",
-    isSimple(values) { return values[0] == 12 && values[1] === 0 },
+    isSimple(values: any) { return values[0] == 12 && values[1] === 0 },
     "parameters": []
   },
   {
     "name": "bnectrcr2",
-    isSimple(values) { return values[0] == 4 && values[1] === 10 },
+    isSimple(values: any) { return values[0] == 4 && values[1] === 10 },
     "parameters": []
   }]
 }

@@ -11,7 +11,7 @@ export const GCTRealMateDefinitionProvider: vscode.DefinitionProvider = {
     const wordRange = document.getWordRangeAtPosition(position);
     if (!wordRange) return [];
 
-    const definitionToFind = document.lineAt(position.line).text.substring(wordRange.start.character, wordRange.end.character));
+    const definitionToFind = document.lineAt(position.line).text.substring(wordRange.start.character, wordRange.end.character);
     for (let i = 0; i < document.lineCount; i++) {
       const text = document.lineAt(i).text;
       const idx = text.indexOf(definitionToFind);

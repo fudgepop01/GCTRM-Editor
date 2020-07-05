@@ -10,7 +10,7 @@ export const GCTRealMateHoverProvider: vscode.HoverProvider = {
     const wordRange = document.getWordRangeAtPosition(position);
     if (!wordRange) return undefined;
 
-    const docToFind = document.lineAt(position.line).text.substring(wordRange.start.character, wordRange.end.character));
+    const docToFind = document.lineAt(position.line).text.substring(wordRange.start.character, wordRange.end.character);
     const result = (argDoc as any)[docToFind];
     if (result) return new vscode.Hover(new vscode.MarkdownString(result));
     else return undefined;
