@@ -1,5 +1,10 @@
 # Change Log
 
+## [0.3.0]
+
+- added auto-formatting
+- added `li` mnemonic (thanks eon <3)
+
 ## [0.2.0]
 
 - added support for simplified mnemonics

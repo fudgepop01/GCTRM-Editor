@@ -44,7 +44,7 @@ export default {
     "parameters": [ rA, UIMM ]
   },
   {
-    "name": "cmplwi_cr3",
+    "name": "cmplwi",
     isSimple(values: number[]) { return values[0] == 3 && values[1] === 0 },
     "equivalent": "cmpli 3, 0, rA, UIMM",
     "parameters": [ rA, UIMM ]

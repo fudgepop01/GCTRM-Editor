@@ -34,7 +34,7 @@ repository:
         name: meta.separator
   registers:
     patterns:
-      - match: '\b(r|f)(31|30|[0-2]?[0-9]{1})'
+      - match: '\b(r|f|Cr)(31|30|[0-2]?[0-9]{1})'
         captures:
           '1': { name: support.type }
           '2': { name: variable.language }
@@ -78,4 +78,11 @@ repository:
         name: comment
       - match: '(^[^#]+?]$)'
         name: comment
+      - begin: '(\/\*)'
+        beginCaptures:
+          '1': { name: punctuation.definition.comment }
+        end: '(\*\/)'
+        endCaptures:
+          '1': { name: punctuation.definition.comment }
+        name: comment.block
 

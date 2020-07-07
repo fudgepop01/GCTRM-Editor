@@ -2,7 +2,7 @@
 	"name": "gctrm-editor",
 	"displayName": "GCT RealMate Code Editor [BETA]",
 	"description": "an extension to assist in the development of gecko codes for PM, P+, and other Brawl mods",
-	"version": "0.2.0",
+	"version": "0.3.0",
 	"publisher": "fudgepops",
 	"repository": {
 		"url": "https://github.com/fudgepop01/GCTRM-Editor"
@@ -15,7 +15,7 @@
 	],
 	"activationEvents": [
 		"onLanguage:gctrm",
-		"onCommand:gct-editor.helloWorld"
+		"onCommand:gctrm-editor.auto-format"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -28,7 +28,7 @@
 				"extensions": [
 					".asm"
 				],
-				"configuration": "./syntaxes/main/gctrm-configuration.json"
+				"configuration": "./syntaxes/main/gctrm-configuration.tmLanguage"
 			}
 		],
 		"grammars": [
@@ -40,10 +40,18 @@
 		],
 		"commands": [
 			{
-				"command": "gct-editor.helloWorld",
-				"title": "Hello World"
+				"command": "gctrm-editor.auto-format",
+				"title": "Format GCTRM"
 			}
-		]
+		],
+		"menus": {
+			"commandPalette": [
+				{
+					"command": "gctrm-editor.auto-format",
+					"when": "editorLangId == gctrm"
+				}
+			]
+		}
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",

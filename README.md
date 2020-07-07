@@ -24,6 +24,16 @@ hovering on arguments given by the autocompletion will give you documentation ab
 
 ![hover docs](readme_resources/hover_documentation_arguments.png)
 
+## Auto-Formatting
+
+By opening the command palette with `Ctrl+Shift+P`, you can choose to
+automatically format the document with GCTRM-specific formatting. This effectively
+allows you to copy/paste ASM directly from this particular output of
+[godbolt compiler explorer](https://godbolt.org/z/E57_fg), format it, and hopefully have it run in your own code.
+
+If you want to format only specific lines, you can do that too! just select
+the lines you wish to modify and *then* use the command.
+
 # Reporting Issues
 
 head over to the github page or contact me on discord: `fudgepop01#0448`
