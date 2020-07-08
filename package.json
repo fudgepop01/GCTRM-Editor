@@ -1,8 +1,8 @@
 {
 	"name": "gctrm-editor",
-	"displayName": "GCT RealMate Code Editor [BETA]",
+	"displayName": "GCT RealMate Code Editor",
 	"description": "an extension to assist in the development of gecko codes for PM, P+, and other Brawl mods",
-	"version": "0.3.0",
+	"version": "0.4.0",
 	"publisher": "fudgepops",
 	"repository": {
 		"url": "https://github.com/fudgepop01/GCTRM-Editor"
@@ -28,14 +28,14 @@
 				"extensions": [
 					".asm"
 				],
-				"configuration": "./syntaxes/main/gctrm-configuration.tmLanguage"
+				"configuration": "./syntaxes/main/gctrm-configuration.json"
 			}
 		],
 		"grammars": [
 			{
 				"language": "gctrm",
 				"scopeName": "source.gctrm",
-				"path": "./syntaxes/main/GCTRM.json"
+				"path": "./syntaxes/main/GCTRM.tmLanguage"
 			}
 		],
 		"commands": [
@@ -51,6 +51,16 @@
 					"when": "editorLangId == gctrm"
 				}
 			]
+		},
+		"configuration": {
+			"title": "GCTRMEditor",
+			"properties": {
+				"gctrm.mappath": {
+					"type": "string",
+					"default": "internal",
+					"description": "the location of the map file you want to use for offset insights"
+				}
+			}
 		}
 	},
 	"scripts": {

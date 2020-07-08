@@ -1,5 +1,20 @@
 # Change Log
 
+## [0.4.0]
+
+- **added the ability to load map files**
+  - you can hover over addresses (`$hexvalues`) to see the previous mapped function
+  - you now have autocompletion when writing addresses (though it might take a moment to appear)
+- added autocompletion of labels
+
+## [0.3.1]
+
+- just realized I configured the package json wrong, nullifying the adjustments I made to the syntax...
+  - so I fixed that
+- made block comments work /* ... */
+- made lines starting and ending with [] act as comments
+- made it so raw gecko code lines are highlighted properly
+
 ## [0.3.0]
 
 - added auto-formatting

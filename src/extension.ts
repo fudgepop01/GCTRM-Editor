@@ -5,10 +5,10 @@ import { GCTRealMateDefinitionProvider } from './definitionProvider';
 import { GCTRealMateHoverProvider } from './hoverProvider';
 import { autoFormat } from './auto-formatter';
 
-export function activate(context: vscode.ExtensionContext) {
+export async function activate(context: vscode.ExtensionContext) {
 	const formatCommand = vscode.commands.registerCommand('gctrm-editor.auto-format', autoFormat);
 
-	const provider = vscode.languages.registerCompletionItemProvider('gctrm', GCTRealMateProvider, '<', '%');
+	const provider = vscode.languages.registerCompletionItemProvider('gctrm', await GCTRealMateProvider(), '<', '%', '$');
 	const foldingProvider = vscode.languages.registerFoldingRangeProvider('gctrm', GCTRealMateFolder);
 	const definitionProvider = vscode.languages.registerDefinitionProvider('gctrm', GCTRealMateDefinitionProvider);
 	const hoverProvider = vscode.languages.registerHoverProvider('gctrm', GCTRealMateHoverProvider);

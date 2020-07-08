@@ -34,6 +34,13 @@ allows you to copy/paste ASM directly from this particular output of
 If you want to format only specific lines, you can do that too! just select
 the lines you wish to modify and *then* use the command.
 
+# Additions:
+
+- **added the ability to load map files**
+  - you can hover over addresses (`$hexvalues`) to see the previous mapped function
+  - you now have autocompletion when writing addresses (though it might take a moment to appear)
+- added autocompletion of labels
+
 # Reporting Issues
 
 head over to the github page or contact me on discord: `fudgepop01#0448`

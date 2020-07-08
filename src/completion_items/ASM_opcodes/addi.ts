@@ -41,5 +41,12 @@ export default {
     },
     "equivalent": "addi rD, rA, varname",
     "parameters": [ rD, {label: "varname"} ],
+  }, {
+    "name": "subi",
+    isSimple(values: number[]) {
+      return false;
+    },
+    "equivalent": "addi rx, ry, -SIMM",
+    "parameters": [ rD, rA, SIMM ]
   }]
 }
