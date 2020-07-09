@@ -183,7 +183,7 @@ and explain what they do.
   - where a **single** machine code instruction goes
 - `<macro name>` and `<alias name>`
   - text that can contain a-z, 0-9, and underscores
-- `<opteration>`
+- `<operation>`
   - really only used in `.alias`
   - theoretically allows you to perform an operation on an argument
   - includes standard arithmatic operators ( + - * / )
@@ -321,6 +321,48 @@ label_outside_code_block:
 
 labels are effectively named offsets in the code that you can jump to from branch
 instructions or store as locations in various registers.
+
+#### BA, PO
+
+Syntax:
+```
+load into gecko Base Address register:
+BA<-<address>
+PO<-<address>
+
+put contents of gecko Base Address register somewhere else:
+BA-><address>
+PO-><address>
+```
+
+some gecko commands implemented for a bit of clarity.
+
+These will load things into the gecko Base Address or Pointer Address registers, as
+well as set somewhere else
+
+#### .RESET
+
+Syntax:
+```
+.RESET
+```
+
+resets the gecko Base Address and Pointer Address to their initial values. BA will be
+reset to `0x80000000` and PO will be reset to `0x90000000`.
+
+In some cases this is critical to put at the end of the code to allow other
+codes to function properly.
+
+#### .GOTO
+
+Syntax:
+```
+.GOTO-><label>
+```
+
+tells gecko to go to a particular part in the code. This is useful
+for when a chunk of data is defined and you don't want to read it as commands.
+
 
 ## Definitions:
 
