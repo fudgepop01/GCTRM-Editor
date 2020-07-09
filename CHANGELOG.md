@@ -1,8 +1,18 @@
 # Change Log
 
+## [0.4.2]
+
+- allows autocomplete to be searchable by label too
+
+## [0.4.1]
+
+- allowed map files to have more than 5 arguments per line (everything 5+ will be considered the label)
+- added a minus 1 in a place where I forgot it the first time because I'm dumb
+
 ## [0.4.0]
 
 - **added the ability to load map files**
+  - can be specified as a configuration option `(gctrm ==> mapfiles)`
   - you can hover over addresses (`$hexvalues`) to see the previous mapped function
   - you now have autocompletion when writing addresses (though it might take a moment to appear)
 - added autocompletion of labels

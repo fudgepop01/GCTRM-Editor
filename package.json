@@ -2,7 +2,7 @@
 	"name": "gctrm-editor",
 	"displayName": "GCT RealMate Code Editor",
 	"description": "an extension to assist in the development of gecko codes for PM, P+, and other Brawl mods",
-	"version": "0.4.0",
+	"version": "0.4.3",
 	"publisher": "fudgepops",
 	"repository": {
 		"url": "https://github.com/fudgepop01/GCTRM-Editor"

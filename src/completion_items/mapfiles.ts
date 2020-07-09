@@ -23,7 +23,8 @@ const loadMaps = async () => {
   if (mapPath === 'internal') {
     mapFilePath = sora_melee;
   } else if (mapPath.startsWith('.')) {
-    mapFilePath = vscode.workspace.getWorkspaceFolder(vscode.window.activeTextEditor!.document.uri)?.uri.path + mapPath.substring(1);
+    mapFilePath =
+      (vscode.workspace.getWorkspaceFolder(vscode.window.activeTextEditor!.document.uri)?.uri.path + mapPath.substring(1));
   } else {
     mapFilePath = mapPath;
   }
@@ -40,12 +41,13 @@ const loadMaps = async () => {
   for (const line of lines) {
     if (!/[0-9a-fA-F]{8}/g.test(line[0])) { continue; }
 
-    if (line.length === 5) {
-      mapData[parseInt(line[0], 16)] = {
-        offset: line[0],
-        size: line[1],
-        fileOffset: line[2],
-        label: line[4]
+    if (line.length >= 5) {
+      const [offset, size, fileOffset, unk, ...label] = line;
+      mapData[parseInt(offset, 16)] = {
+        offset: offset,
+        size: size,
+        fileOffset: fileOffset,
+        label: label.join(' ')
       };
     } else {
       mapData[parseInt(line[0], 16)] = line[1];
@@ -74,12 +76,26 @@ export const mapsAsCompletionItems = async (): Promise<vscode.CompletionItem[]> 
         filterText: offsetStr,
         insertText: offsetStr
       });
+      out.push({
+        label: data.replace(/[^a-zA-Z0-9_]/g, '_'),
+        sortText: offsetStr,
+        documentation: new vscode.MarkdownString(`offset: \`${offsetStr}\`;\n\nlabel:\n\n\`${data}\``),
+        filterText: data,
+        insertText: offsetStr
+      });
     } else {
       out.push({
         label: data.label,
         sortText: offsetStr,
         documentation: new vscode.MarkdownString(`offset: 0x\`${offsetStr}\`; \n\n size: 0x\`${data.size}\` \n\n label: \`${data.label}\``),
         filterText: offsetStr,
+        insertText: offsetStr
+      });
+      out.push({
+        label: data.label.replace(/[^a-zA-Z0-9_]/g, '_'),
+        sortText: offsetStr,
+        documentation: new vscode.MarkdownString(`offset: 0x\`${offsetStr}\`; \n\n size: 0x\`${data.size}\` \n\n label: \`${data.label}\``),
+        filterText: data.label.replace(/[^a-zA-Z0-9_]/g, '_'),
         insertText: offsetStr
       })
     }
@@ -101,7 +117,7 @@ export const getLastMappedFunctionFromOffset = async (offset: number) => {
 
     if (keys[mid] === target) { return mid; }
 
-    if (mid > 0 && keys[mid] <= target && target < keys[mid]) {
+    if (mid > 0 && keys[mid - 1] <= target && target < keys[mid]) {
       return mid - 1;
     }
 
@@ -113,25 +129,26 @@ export const getLastMappedFunctionFromOffset = async (offset: number) => {
   };
 
   const mapKeys = Object.keys(mapData).map(k => parseInt(k));
-  const key = mapKeys[binaryKeySearch(mapKeys, 0, mapKeys.length, offset)];
+  const key = mapKeys[binaryKeySearch(mapKeys, 0, mapKeys.length - 1, offset)];
 
+  console.log(offset.toString(16).padStart(8, '0'), key);
   if (typeof mapData[key] === 'string') {
     return `
 last mapped item: \`${mapData[key]}\`
 
-last mapped offset: \`${key.toString(16).padStart(8, '0')}\`;
+last mapped offset: 0x\`${key.toString(16).padStart(8, '0')}\`;
 
-offset from offset: \`${(offset - key).toString(16).padStart(8, '0')}\`
+offset from offset: 0x\`${(offset - key).toString(16).padStart(8, '0')}\`
 `;
   } else {
     return `
 last mapped item: \`${(mapData as any)[key].label}\`;
 
-last mapped offset: \`${(mapData as any)[key].offset}\`;
+last mapped offset: 0x\`${(mapData as any)[key].offset}\`;
 
-offset from offset: \`${(offset - parseInt((mapData as any)[key].offset, 16)).toString(16).padStart(8, '0')}\`
+offset from offset: 0x\`${(offset - parseInt((mapData as any)[key].offset, 16)).toString(16).padStart(8, '0')}\`
 
-last mapped size: \`${(mapData as any)[key].size}\`
+last mapped size: 0x\`${(mapData as any)[key].size}\`
 `;
   }
 };
